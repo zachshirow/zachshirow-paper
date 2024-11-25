@@ -1,72 +1,66 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
-  author: "Sat Naing",
-  profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
+  website: "https://zachshirow.ir", // replace this with your deployed domain
+  author: "زکریا شیرمحمدلی",
+  profile: "https://zachshirow.ir/about",
+  desc: "باغچه دیجیتال زکریا شیرمحمدلی، جایی برای نشر تجربیاتم در زمینه های آموزش زبان انگلیسی، برنامه نویسی و طراحی گرافیک.",
+  title: "zachshirow",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
-  postPerIndex: 4,
-  postPerPage: 3,
+  postPerIndex: 6,
+  postPerPage: 6,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   editPost: {
-    url: "https://github.com/satnaing/astro-paper/edit/main/src/content/blog",
-    text: "Suggest Changes",
+    url: "https://github.com/zachshirow/zachshirow-paper/edit/main/src/content/posts",
+    text: "پیشنهاد ویرایش",
     appendFilePath: true,
   },
 };
 
 export const LOCALE = {
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  langTag: ["en-EN"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+  lang: "fa", // html lang code. Set this empty and default will be "en"
+  langTag: ["fa-IR"], // BCP 47 Language Tags. Set this empty [] to use the environment default
 } as const;
 
 export const LOGO_IMAGE = {
-  enable: false,
-  svg: true,
-  width: 216,
-  height: 46,
+  enable: true,
+  svg: false,
+  width: 50,
+  height: 50,
 };
 
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: ` ${SITE.title} on Github`,
-    active: true,
-  },
-  {
-    name: "Facebook",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Facebook`,
+    href: "https://github.com/zachshirow",
+    linkTitle: ` ${SITE.title} در گیتهاب`,
     active: true,
   },
   {
     name: "Instagram",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Instagram`,
+    href: "https://instagram.com/zachshirow",
+    linkTitle: `${SITE.title} در اینستاگرام`,
     active: true,
   },
   {
     name: "LinkedIn",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on LinkedIn`,
+    href: "https://www.linkedin.com/in/zachshirow",
+    linkTitle: `${SITE.title} در لینکداین`,
     active: true,
   },
   {
     name: "Mail",
-    href: "mailto:yourmail@gmail.com",
-    linkTitle: `Send an email to ${SITE.title}`,
-    active: false,
+    href: "mailto:zachshirow@gmail.com",
+    linkTitle: `ارسال یک ایمیل به ${SITE.author}`,
+    active: true,
   },
   {
     name: "X",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on X`,
-    active: false,
+    href: "https://github.com/zachshirow",
+    linkTitle: `${SITE.title} در تویتر/اکس`,
+    active: true,
   },
   {
     name: "Twitch",
@@ -76,7 +70,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "YouTube",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://youtube.com/zachshirow",
     linkTitle: `${SITE.title} on YouTube`,
     active: false,
   },
@@ -142,9 +136,9 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Telegram",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Telegram`,
-    active: false,
+    href: "https://t.me/zachshirow_ir",
+    linkTitle: `${SITE.title} در تلگرام`,
+    active: true,
   },
   {
     name: "Mastodon",

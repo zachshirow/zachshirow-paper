@@ -10,8 +10,8 @@ import ShareLinks from "@components/ShareLinks.astro";
 import { SITE } from "@config";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
-  posts: CollectionEntry<"blog">[];
+  post: CollectionEntry<"posts">;
+  posts: CollectionEntry<"posts">[];
 }
 
 const { post, posts } = Astro.props;
@@ -69,11 +69,11 @@ const nextPost =
       class="focus-outline mb-2 mt-8 flex hover:opacity-75"
       onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"
     >
-      <svg xmlns="http://www.w3.org/2000/svg"
+      <svg xmlns="http://www.w3.org/2000/svg" class="rotate-180"
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
-      </svg><span>Go back</span>
+      </svg><span>بازگشت</span>
     </button>
   </div>
   <main id="main-content">
@@ -91,7 +91,7 @@ const nextPost =
     </article>
 
     <ul class="my-8">
-      {tags.map(tag => <Tag tag={slugifyStr(tag)} />)}
+      {tags.map(tag => <Tag tag={slugifyStr(tag)} size="sm" />)}
     </ul>
 
     <div
@@ -101,12 +101,13 @@ const nextPost =
         id="back-to-top"
         class="focus-outline whitespace-nowrap py-1 hover:opacity-75"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90">
+      <span>بازگشت به بالا</span>  
+      <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90">
           <path
             d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
           ></path>
         </svg>
-        <span>Back to Top</span>
+        
       </button>
 
       <ShareLinks />
@@ -242,7 +243,7 @@ const nextPost =
       heading.classList.add("group");
       const link = document.createElement("a");
       link.className =
-        "heading-link ml-2 opacity-0 group-hover:opacity-100 focus:opacity-100";
+        "heading-link mr-2 opacity-0 group-hover:opacity-100 focus:opacity-100 text-lg ";
       link.href = "#" + heading.id;
 
       const span = document.createElement("span");

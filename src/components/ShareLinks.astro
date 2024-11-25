@@ -5,41 +5,41 @@ import socialIcons from "@assets/socialIcons";
 const URL = Astro.url;
 
 const shareLinks = [
-  {
-    name: "WhatsApp",
-    href: "https://wa.me/?text=",
-    linkTitle: `Share this post via WhatsApp`,
-  },
-  {
-    name: "Facebook",
-    href: "https://www.facebook.com/sharer.php?u=",
-    linkTitle: `Share this post on Facebook`,
-  },
+  // {
+  //   name: "WhatsApp",
+  //   href: "https://wa.me/?text=",
+  //   linkTitle: `Share this post via WhatsApp`,
+  // },
+  // {
+  //   name: "Facebook",
+  //   href: "https://www.facebook.com/sharer.php?u=",
+  //   linkTitle: `Share this post on Facebook`,
+  // },
   {
     name: "X",
     href: "https://x.com/intent/post?url=",
-    linkTitle: `Share this post on X`,
+    linkTitle: `به اشتراک گذاشتن این پست در تویتر/اکس`,
   },
   {
     name: "Telegram",
     href: "https://t.me/share/url?url=",
-    linkTitle: `Share this post via Telegram`,
+    linkTitle: `به اشتراک گذاشتن این پست در تلگرام`,
   },
-  {
-    name: "Pinterest",
-    href: "https://pinterest.com/pin/create/button/?url=",
-    linkTitle: `Share this post on Pinterest`,
-  },
+  // {
+  //   name: "Pinterest",
+  //   href: "https://pinterest.com/pin/create/button/?url=",
+  //   linkTitle: `Share this post on Pinterest`,
+  // },
   {
     name: "Mail",
     href: "mailto:?subject=See%20this%20post&body=",
-    linkTitle: `Share this post via email`,
+    linkTitle: `به اشتراک گذاشتن این پست از طریق ایمیل`,
   },
 ] as const;
 ---
 
 <div class={`social-icons`}>
-  <span class="italic">Share this post on:</span>
+  <span class="italic">این پست را به اشتراک بگذارید:</span>
   <div class="text-center">
     {
       shareLinks.map(social => (
