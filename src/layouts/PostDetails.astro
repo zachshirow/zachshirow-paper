@@ -2,12 +2,19 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@config";
+import { slugifyStr } from "@utils/slugify";
+
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
-import type { CollectionEntry } from "astro:content";
-import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
-import { SITE } from "@config";
+import SiteAuthor from "@components/SiteAuthor.astro";
+import BackButton from "components/BackButton.astro"
+import TopButton from "components/TopButton.astro"
+import NextPost from "@components/NextPost.astro";
+import PrevPost from "@components/PrevPost.astro";
+import Hr from "@components/Hr.astro";
 
 export interface Props {
   post: CollectionEntry<"posts">;
@@ -60,25 +67,17 @@ const currentPostIndex = allPosts.findIndex(a => a.slug === post.slug);
 const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost =
   currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
+
+
 ---
 
 <Layout {...layoutProps}>
   <Header />
 
-  <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
-    <button
-      class="focus-outline mb-2 mt-8 flex hover:opacity-75"
-      onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="rotate-180"
-        ><path
-          d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-        ></path>
-      </svg><span>بازگشت</span>
-    </button>
-  </div>
+  <BackButton />
   <main id="main-content">
     <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
+    
     <Datetime
       pubDatetime={pubDatetime}
       modDatetime={modDatetime}
@@ -88,6 +87,7 @@ const nextPost =
       postId={post.id}
       readingTime={readingTime}
     />
+    
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
@@ -96,87 +96,29 @@ const nextPost =
       {tags.map(tag => <Tag tag={slugifyStr(tag)} size="sm" />)}
     </ul>
 
+    <SiteAuthor />
+
     <div
       class="flex flex-col-reverse items-center justify-between gap-6 sm:flex-row-reverse sm:items-end sm:gap-4"
     >
-      <button
-        id="back-to-top"
-        class="focus-outline whitespace-nowrap py-1 hover:opacity-75"
-      >
-      <span>بازگشت به بالا</span>  
-      <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90">
-          <path
-            d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-          ></path>
-        </svg>
-        
-      </button>
-
+      <TopButton />
       <ShareLinks />
     </div>
 
-    <hr class="my-6 border-dashed" />
+    <div class="mt-4 mb-12">
+      <Hr noPadding/>
+    </div>
 
     <!-- Previous/Next Post Buttons -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       {
         prevPost && (
-          <a
-            href={`/posts/${prevPost.slug}`}
-            class="flex w-full gap-1 hover:opacity-75"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right flex-none"
-            >
-              <>
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 6l6 6l-6 6" />
-              </>
-            </svg>
-            <div>
-              <span>پست قبلی</span>
-              <div class="text-sm text-skin-accent/85">{prevPost.title}</div>
-            </div>
-          </a>
+          <PrevPost slug={prevPost.slug} title={prevPost.title} />
         )
       }
       {
         nextPost && (
-          <a
-            href={`/posts/${nextPost.slug}`}
-            class="flex w-full justify-end gap-1 text-left hover:opacity-75 sm:col-start-2"
-          >
-            <div>
-              <span>پست بعدی</span>
-              <div class="text-sm text-skin-accent/85">{nextPost.title}</div>
-            </div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left flex-none"
-            >
-              <>
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M15 6l-6 6l6 6" />
-              </>
-            </svg>
-          </a>
+          <NextPost slug={nextPost.slug} title={nextPost.title} />
         )
       }
     </div>
@@ -233,6 +175,7 @@ const nextPost =
       }
     });
   }
+
   updateScrollProgress();
 
   /** Attaches links to headings in the document,

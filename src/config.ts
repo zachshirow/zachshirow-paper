@@ -3,6 +3,7 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://zachshirow.ir", // replace this with your deployed domain
   author: "زکریا شیرمحمدلی",
+  biography: "معلم زبان انگلیسی، برنامه نویس و طراح گرافیک در شهر گنبد کاووس استان گلستان.",
   profile: "https://zachshirow.ir/about",
   desc: "باغچه دیجیتال زکریا شیرمحمدلی، جایی برای نشر تجربیاتم در زمینه های آموزش زبان انگلیسی، برنامه نویسی و طراحی گرافیک.",
   title: "zachshirow",

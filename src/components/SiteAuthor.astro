@@ -1,0 +1,17 @@
+---
+import Image from "astro/components/Image.astro"
+import zachshirowAuthor from "@assets/zachshirow-author.jpg"
+import {SITE} from "@config"
+---
+
+<div class="flex gap-8 items-center w-full sm:w-2/3 m-auto my-12">
+    <div class="avatar">
+      <div class="w-12 rounded-full">
+        <Image src={zachshirowAuthor} alt={`${SITE.title} | ${SITE.author}`} />
+      </div>
+    </div>
+    <div>
+      <p><b>{SITE.author}</b></p>
+      <p>{SITE.biography}</p>
+    </div>
+  </div>

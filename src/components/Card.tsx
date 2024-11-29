@@ -19,18 +19,18 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 
   return (
     <li className="my-6">
-      <a
-        href={href}
-        className="inline-block text-xl font-bold text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-      >
-        {secHeading ? (
-          <h2 {...headerProps}>{title}</h2>
-        ) : (
-          <h3 {...headerProps}>{title}</h3>
-        )}
-      </a>
-      <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} readingTime={readingTime} />
-      <p>{description}</p>
+        <a
+          href={href}
+          className="inline-block text-xl font-bold text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0 mb-2"
+        >
+          {secHeading ? (
+            <h2 {...headerProps}>{title}</h2>
+          ) : (
+            <h3 {...headerProps}>{title}</h3>
+          )}
+        </a>
+        <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} readingTime={readingTime} />
+        <p>{description}</p>
     </li>
   );
 }
