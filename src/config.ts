@@ -11,7 +11,7 @@ export const SITE: Site = {
   postPerIndex: 6,
   postPerPage: 6,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  showArchives: true,
+  showArchives: false,
   editPost: {
     url: "https://github.com/zachshirow/zachshirow-paper/edit/main/src/content/posts",
     text: "پیشنهاد ویرایش",
