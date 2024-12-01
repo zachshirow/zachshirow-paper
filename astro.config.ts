@@ -7,14 +7,16 @@ import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
-import db from "@astrojs/db";
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+
   integrations: [tailwind({
     applyBaseStyles: false,
-  }), react(), sitemap(), db()],
+  }), react(), sitemap()],
+
   markdown: {
     remarkPlugins: [
       remarkToc,
@@ -32,13 +34,22 @@ export default defineConfig({
       wrap: true,
     },
   },
+
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
   },
+
   scopedStyleStrategy: "where",
+
   experimental: {
     contentLayer: true,
   },
+
+  output: "hybrid",
+
+  adapter: node({
+    mode: "standalone",
+  }),
 });

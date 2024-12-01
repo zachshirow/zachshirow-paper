@@ -1,0 +1,66 @@
+---
+import { SITE } from "@config";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import BackButton from "@components/BackButton.astro";
+import axios from "axios"
+
+export const prerender = false;
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const email = data.get("email");
+    const utm_source = data.get("utm_source");
+    console.log(utm_source)
+
+    const request = await axios({
+      method: "POST",
+      url: "https://api.baserow.io/api/database/rows/table/400729/?user_field_names=true",
+      headers: {
+        Authorization: `Token ${import.meta.env.BASEROW_TOKEN}`,
+        "Content-Type": "application/json"
+      },
+      data: {
+        "Email": email,
+        "utm_source": utm_source,
+        "Active": true
+      }
+    })
+
+    const response = await JSON.stringify(request)
+
+    return response;
+
+    // Do something with the data
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
+---
+
+<Layout title={`عضویت موفق در خبرنامه | ${SITE.title}`}>
+  <Header />
+
+  <main id="main-content">
+    <h1>جمعمون جمعه!</h1>
+    <p>ایمیل شما با موفقیت در لیست خبرنامه قرار گرفت.</p>
+    <p>از این به بعد هر موقع مطلب جدیدی منتشر کردم، یه ایمیل برای شما هم می فرستم.</p>
+    <BackButton justify="center"/>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+    #main-content {
+    @apply mx-auto flex flex-col flex-1 items-center justify-center w-full;
+    }
+    h1 {
+        @apply text-lg font-bold
+    }
+</style>

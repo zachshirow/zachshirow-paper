@@ -1,0 +1,18 @@
+---
+
+
+---
+
+<div  class="my-4 self-center m-auto w-full sm:w-1/2">
+    <p class="mb-4 text-center"><b>عضویت در خبرنامه</b></p>
+
+    <div>
+        <form target="_blank" action="/newsletter" method="POST">
+            <input type="email" name="email" placeholder="zachshirow@gmail.com" class="input input-sm w-3/4 input-bordered max-w-xs" />
+            <input type="url" name="utm_source" class="display-none" id="utm_source" value={Astro.url.toString()} />
+            <button class="btn btn-sm" id="newsletter-btn">عضویت</button>
+        </form>
+    </div>
+</div>
+
+
